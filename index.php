@@ -26,8 +26,8 @@ if (file_exists($controllerFile)) {
             $objController->$method();
         }
     } else {
-        echo “Method tidak ditemukan.”;
+        echo "Method tidak ditemukan.";
     }
 } else {
-    echo “Controller tidak ditemukan.”;
+    echo "Controller tidak ditemukan.";
 }
