@@ -1,6 +1,6 @@
 <?php
-function base_url($path = ‘’)
+function base_url($path = '')
 {
     global $config;
-    return rtrim($config[‘base_url’], ‘/‘) . ‘/‘ . ltrim($path, ‘/‘);
+    return rtrim($config['base_url'], '/') . '/' . ltrim($path, '/');
 }
