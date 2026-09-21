@@ -19,7 +19,6 @@ $controllerFile = ‘controller/‘ . $controllerName . ‘.php’;
 if (file_exists($controllerFile)) {
     require_once $controllerFile;
     $objController = new $controllerName();
-
     if (method_exists($objController, $method)) {
         if ($parameter !== null) {
             $objController->$method($parameter);
