@@ -8,6 +8,7 @@ $url = $_GET['url'] ?? '';
 if ($url == '') {
     $url = $route['default_controller'] . '/index';
 }
+
 $url = trim($url, '/');
 $segment = explode('/', $url);
 $controller = $segment[0] ?? $route['default_controller'];
