@@ -7,7 +7,7 @@ class Latihan1Model
             [
                 'nama' => 'Fakhril',
                 'nim' => '3022501',
-                'alamat' => 'Jl. PangkalPinang Bangka',
+                'alamat' => 'Jl. Pangkalpinang Bangka',
                 'no_telp' => '0891928398'
             ],
             [
@@ -18,8 +18,8 @@ class Latihan1Model
             ],
             [
                 'nama' => 'Dresta',
-                'nim' => '3022503'
-                'alamat' => 'Jl. Ciledug Tanggerang',
+                'nim' => '3022503',
+                'alamat' => 'Jl. Ciledug Tangerang',
                 'no_telp' => '081737638'
             ]
         ];
