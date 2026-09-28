@@ -5,22 +5,22 @@ class Latihan1Model
     {
         return [
             [
-                'nama' => 'Fakhril',
-                'nim' => '3022501',
-                'alamat' => 'Jl. Pangkalpinang Bangka',
-                'no_telp' => '0891928398'
-            ],
-            [
                 'nama' => 'Rani',
-                'nim' => '3022502',
-                'alamat' => 'Jl. Sungailiat Bangka',
-                'no_telp' => '092887487'
+                'nim' => '2511500082',
+                'alamat' => 'Jl. Mesu Bangka',
+                'no_telp' => '085709187041'
             ],
             [
-                'nama' => 'Dresta',
-                'nim' => '3022503',
-                'alamat' => 'Jl. Ciledug Tangerang',
-                'no_telp' => '081737638'
+                'nama' => 'Andin',
+                'nim' => '2522500070',
+                'alamat' => 'Jl. Silok Bangka',
+                'no_telp' => '085112651757'
+            ],
+            [
+                'nama' => 'Nadia',
+                'nim' => '2522500071',
+                'alamat' => 'Jl. Raya Dul Bangka',
+                'no_telp' => '085122198969'
             ]
         ];
     }
