@@ -2,8 +2,7 @@
 require_once 'config/autoload.php';
 require_once 'config/routes.php';
 
-$url = $_GET['url'] ?? $route['default_controller'] . '/' . $route['default_method'];
-// if ($url == '') {
+$url = $_GET[‘url’] ?? $route[‘default_controller’] . ‘/‘ . $route[‘default_method’]=‘index’;
 //$url = $route['default_controller'] . '/index';
 //}
 //$url = trim($url, '/');
