@@ -58,6 +58,6 @@
         }
         ?>
     </table>
-
+    Admin, <?=nhtmlspecialchars($nama_user) ?>
 </body>
 </html>
