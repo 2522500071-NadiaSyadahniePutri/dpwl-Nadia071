@@ -1,7 +1,5 @@
 <?php
-
 spl_autoload_register(function ($namacontroller) {
-
     $paths = ['controller/', 'model/', 'config/', 'core/'];
 
     foreach ($paths as $path) {
@@ -14,5 +12,4 @@ spl_autoload_register(function ($namacontroller) {
     }
 
     echo "Class '$namacontroller' tidak ditemukan.";
-
 });
