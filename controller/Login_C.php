@@ -7,18 +7,27 @@ class Login_C extends Controller
         $this->load->view('login', $sisipn);
     }
 
-    public function CekLogin()
-    {
-        $email = $this->load->post('email');
-        $password = $this->load->post('pass');
-        $cekdata = $this->load->model('Login_M');
-        $datauser = $cekdata->ambildata($email);
-        if ($datauser && password_verify($password, $datauser['password'])) {
-            $this->session->set_userdata('emailuser', $email);
-           
-        } else {
-            $this->session->set_flashdata('pesan', 'Gagal: Silahkan cek email, password, atau status akun Anda...');
-            redirect('login_C/index');
-        }
+   
+public function CekLogin()
+{
+    $email = $this->load->post('email');
+    $password = $this->load->post('pass');
+
+    $cekdata = $this->load->model('Login_M');
+    $datauser = $cekdata->ambildata($email);
+
+    if ($datauser && $password === $datauser['password']) {
+        $this->session->set_userdata('emailuser', $email);
+
+        redirect('Admin_C/index');
+    } else {
+        $this->session->set_flashdata(
+            'pesan',
+            'Gagal: Silahkan cek email, password, atau status akun Anda...'
+        );
+
+        redirect('Login_C/index');
     }
+}
+
 }
