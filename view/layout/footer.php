@@ -1,4 +1,3 @@
-
 <!-- Main Footer -->
 <footer class="main-footer">
   <div class="float-right d-none d-sm-inline">
@@ -16,13 +15,13 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="AdminLTE-3.0.2/plugins/jquery/jquery.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/plugins/jquery/jquery.min.js') ?>"></script>
 
 <!-- Bootstrap -->
-<script src="AdminLTE-3.0.2/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
 <!-- AdminLTE -->
-<script src="AdminLTE-3.0.2/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/dist/js/adminlte.min.js') ?>"></script>
 
 </body>
 </html>
