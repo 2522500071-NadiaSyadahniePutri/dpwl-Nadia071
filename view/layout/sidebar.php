@@ -3,7 +3,7 @@
 
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
-    <img src="AdminLTE-3.0.2/dist/img/AdminLTELogo.png"
+    <img src="<?= base_url('AdminLTE-3.0.2/dist/img/AdminLTELogo.png') ?>"
          alt="AdminLTE Logo"
          class="brand-image img-circle elevation-3"
          style="opacity: .8">
@@ -16,7 +16,7 @@
     <!-- User Panel -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="foto%20nadia.png"
+        <img src="<?= base_url('foto nadia.png') ?>"
              class="img-circle elevation-2"
              alt="User Image">
       </div>
@@ -59,7 +59,7 @@
 
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?= base_url('mobil_c/index') ?>" class="nav-link">
+              <a href="<?= base_url('Mobil_C/index') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Mobil</p>
               </a>
