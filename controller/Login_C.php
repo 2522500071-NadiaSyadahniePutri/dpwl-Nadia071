@@ -14,7 +14,7 @@ public function CekLogin()
     $datauser = $cekdata->ambildata($email);
     if ($datauser && $password === $datauser['password']) {
         $this->session->set_userdata('emailuser', $email);
-        $this->session->set_flashdata('pesan', 'Login berhasil sebagai ' . $this->session->userdata('emailuser'))
+        $this->session->set_flashdata('pesan', 'Login berhasil sebagai ' . $this->session->userdata('emailuser'));
         redirect('Admin_C/index');
     } else {
         $this->session->set_flashdata('pesan', 'Gagal: Silahkan cek email, password, atau status akun Anda...');
