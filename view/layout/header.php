@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +18,13 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-  <?php
-  if (!empty($info_psn)) {
+
+<?php
+if (!empty($info_psn)) {
     echo "<script>alert('" . $info_psn . "');</script>";
-  }
+}
+?>
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -33,9 +35,11 @@
           <i class="fas fa-bars"></i>
         </a>
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Home</a>
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
