@@ -19,6 +19,10 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+  <?php
+  if (!empty($info_psn)) {
+    echo "<script>alert('" . $info_psn . "');</script>";
+  }
 <div class="wrapper">
 
   <!-- Navbar -->
