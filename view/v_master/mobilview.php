@@ -1,6 +1,5 @@
 <!-- Content Wrapper -->
 <div class="content-wrapper">
-
   <!-- Content Header -->
   <div class="content-header">
     <div class="container-fluid">
@@ -8,7 +7,6 @@
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">DATA MOBIL</h1>
         </div>
-
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item">
@@ -20,16 +18,17 @@
       </div>
     </div>
   </div>
-
   <!-- Main Content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-
           <div class="card">
             <div class="card-body">
-
+              <a href="<?= base_url('Mobil_C/create_mobil') ?>" class="btn btn-primary">
+                <i class="fas fa-car"></i>
+                Tambah Data Mobil
+              </a>
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
