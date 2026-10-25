@@ -21,7 +21,9 @@
              alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block"><?= 'User: ' . $nm_user ?></a>
+        <a href="#" class="d-block">
+    <?= 'User: ' . htmlspecialchars($nm_user ?? 'Admin') ?>
+</a>
       </div>
     </div>
 
