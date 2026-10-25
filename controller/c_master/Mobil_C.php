@@ -19,7 +19,7 @@ class Mobil_C extends Controller
         $this->load->view('layout/footer');
     }
 
-    // Menampilkan form tambah mobil
+    // Form tambah mobil
     public function create_mobil()
     {
         $email = $this->session->userdata('emailuser');
@@ -34,17 +34,13 @@ class Mobil_C extends Controller
         $this->load->view('layout/footer');
     }
 
-    // Menampilkan form edit mobil
+    // Form edit mobil
     public function edit_mobil()
     {
         $no_plat = $this->load->get('no_plat');
 
         if (!$no_plat) {
-            echo "<script>
-                alert('Nomor plat tidak ditemukan!');
-                window.location.href = '" .
-                base_url('?url=Mobil_C/index') . "';
-            </script>";
+            $this->pesanKembali('Nomor plat tidak ditemukan!');
             return;
         }
 
@@ -52,11 +48,7 @@ class Mobil_C extends Controller
         $data['mobil'] = $model->ambilmobil($no_plat);
 
         if (!$data['mobil']) {
-            echo "<script>
-                alert('Data mobil tidak ditemukan!');
-                window.location.href = '" .
-                base_url('?url=Mobil_C/index') . "';
-            </script>";
+            $this->pesanKembali('Data mobil tidak ditemukan!');
             return;
         }
 
@@ -72,7 +64,7 @@ class Mobil_C extends Controller
         $this->load->view('layout/footer');
     }
 
-    // Menyimpan data mobil baru
+    // Menyimpan mobil baru
     public function simpan()
     {
         $no_plat = trim($this->load->post('no_plat'));
@@ -130,7 +122,7 @@ class Mobil_C extends Controller
         }
     }
 
-    // Memproses perubahan data mobil
+    // Memperbarui data mobil
     public function update_mobil()
     {
         $no_plat_lama = trim(
@@ -148,7 +140,6 @@ class Mobil_C extends Controller
 
         $model = $this->load->model('m_master/Mobil_M');
 
-        // Cegah nomor plat ganda jika plat diubah
         if (
             $no_plat_baru !== $no_plat_lama &&
             $model->cekplat($no_plat_baru)
@@ -172,14 +163,7 @@ class Mobil_C extends Controller
 
         $foto = [];
 
-        // Foto lama tetap dipakai jika tidak upload foto baru
-        $fieldFoto = [
-            'ft_depan',
-            'ft_blkg',
-            'ft_interior'
-        ];
-
-        foreach ($fieldFoto as $field) {
+        foreach (['ft_depan', 'ft_blkg', 'ft_interior'] as $field) {
             $nama = $this->uploadFoto(
                 $field,
                 $folder,
@@ -217,7 +201,50 @@ class Mobil_C extends Controller
         }
     }
 
-    // Upload foto dengan validasi ekstensi
+    // Menghapus mobil dan foto terkait
+    public function hapus_mobil()
+    {
+        $no_plat = trim($this->load->post('no_plat'));
+
+        if ($no_plat === '') {
+            $this->pesanKembali('Nomor plat tidak ditemukan!');
+            return;
+        }
+
+        $model = $this->load->model('m_master/Mobil_M');
+        $mobil = $model->ambilmobil($no_plat);
+
+        if (!$mobil) {
+            $this->pesanKembali('Data mobil tidak ditemukan!');
+            return;
+        }
+
+        if ($model->hapus($no_plat)) {
+            $folder = dirname(__DIR__, 2) . '/img/';
+
+            foreach (
+                ['ft_depan', 'ft_blkg', 'ft_interior'] as $field
+            ) {
+                $namaFoto = $mobil[$field] ?? '';
+
+                if ($namaFoto !== '') {
+                    $pathFoto = $folder . basename($namaFoto);
+
+                    if (is_file($pathFoto)) {
+                        @unlink($pathFoto);
+                    }
+                }
+            }
+
+            redirect('Mobil_C/index');
+        } else {
+            $this->pesanKembali(
+                'Data gagal dihapus! Periksa relasi database.'
+            );
+        }
+    }
+
+    // Upload foto JPG, JPEG, atau PNG
     private function uploadFoto(
         $field,
         $folder,
@@ -250,16 +277,13 @@ class Mobil_C extends Controller
             pathinfo($originalName, PATHINFO_EXTENSION)
         );
 
-        $allowed = ['jpg', 'jpeg', 'png'];
-
-        if (!in_array($extension, $allowed, true)) {
+        if (!in_array($extension, ['jpg', 'jpeg', 'png'], true)) {
             $this->pesanKembali(
                 'Foto harus berformat JPG, JPEG, atau PNG!'
             );
             return false;
         }
 
-        // Gunakan nama asli dengan karakter yang aman
         $safeName = preg_replace(
             '/[^A-Za-z0-9._-]/',
             '_',
@@ -293,7 +317,7 @@ class Mobil_C extends Controller
         return $targetName;
     }
 
-    // Menampilkan pesan lalu kembali ke halaman sebelumnya
+    // Menampilkan pesan peringatan
     private function pesanKembali($pesan)
     {
         echo '<script>

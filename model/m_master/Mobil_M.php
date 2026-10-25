@@ -111,4 +111,16 @@ class Mobil_M extends Model
 
         return $sql->execute();
     }
+
+    // Menghapus data mobil
+    public function hapus($no_plat)
+    {
+        $sql = $this->db->prepare(
+            "DELETE FROM mobil WHERE no_plat = ?"
+        );
+
+        $sql->bind_param("s", $no_plat);
+
+        return $sql->execute();
+    }
 }
