@@ -14,16 +14,24 @@ $parameter = $segment[2] ?? null;
 
 $controllerName = ucfirst($controller);
 
+// Penyesuaian nama controller Mobil
 if ($controllerName === 'Mobil_c') {
     $controllerName = 'Mobil_C';
 }
 
+// Penyesuaian nama controller Penyewa
+if ($controllerName === 'Penyewa_c071') {
+    $controllerName = 'Penyewa_C071';
+}
+
+// Lokasi file controller
 $controllerFile = 'controller/' . $controllerName . '.php';
 
 if ($controllerName === 'Mobil_C') {
     $controllerFile = 'controller/c_master/Mobil_C.php';
 }
 
+// Memeriksa keberadaan file controller
 if (file_exists($controllerFile)) {
     require_once $controllerFile;
 
@@ -31,17 +39,21 @@ if (file_exists($controllerFile)) {
         $objController = new $controllerName();
 
         if (method_exists($objController, $method)) {
+
             if ($parameter !== null) {
                 $objController->$method($parameter);
             } else {
                 $objController->$method();
             }
+
         } else {
             echo "Method tidak ditemukan.";
         }
+
     } else {
         echo "Class '$controllerName' tidak ditemukan.";
     }
+
 } else {
     echo "File controller tidak ditemukan: " . $controllerFile;
 }
