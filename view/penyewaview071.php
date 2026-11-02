@@ -1,7 +1,3 @@
-<?php
-$pesan = $this->session->set_flashdata('pesan');
-?>
-
 <div class="content-wrapper">
 
     <section class="content-header">

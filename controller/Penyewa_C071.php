@@ -90,13 +90,16 @@ class Penyewa_C071 extends Controller
         ];
 
         if ($model->simpan($data)) {
-            redirect('Penyewa_C071/index');
+            echo "<script>
+                alert('Data penyewa berhasil ditambahkan!');
+                window.location.href = '" . base_url('?url=Penyewa_C071/index') . "';
+            </script>";
         } else {
             $this->pesanKembali('Gagal menyimpan data penyewa!');
         }
     }
 
-    // Proses mengubah data penyewa
+    // Menampilkan dan memproses perubahan data penyewa
     public function update_penyewa()
     {
         $model = $this->load->model('Penyewa_M071');
@@ -117,11 +120,17 @@ class Penyewa_C071 extends Controller
 
         $nik = trim($this->load->post('Nik071'));
 
+        if (empty($nik)) {
+            $this->pesanKembali('NIK wajib diisi!');
+            return;
+        }
+
         if ($nik !== $penyewa['Nik071'] && $model->ceknik($nik)) {
             $this->pesanKembali('NIK sudah digunakan penyewa lain!');
             return;
         }
 
+        // Menggunakan foto lama jika tidak ada foto baru
         $ft_ktp = $penyewa['ft_ktp'];
         $ft_sim_a = $penyewa['ft_sim_a'];
 
@@ -147,6 +156,8 @@ class Penyewa_C071 extends Controller
         ];
 
         if ($model->update($data, $user_lama)) {
+
+            // Menghapus foto lama jika diganti
             if ($foto_ktp_baru) {
                 $this->hapusFotoLama($penyewa['ft_ktp']);
             }
@@ -155,7 +166,11 @@ class Penyewa_C071 extends Controller
                 $this->hapusFotoLama($penyewa['ft_sim_a']);
             }
 
-            redirect('Penyewa_C071/index');
+            echo "<script>
+                alert('Data penyewa berhasil diperbarui!');
+                window.location.href = '" . base_url('?url=Penyewa_C071/index') . "';
+            </script>";
+
         } else {
             $this->pesanKembali('Gagal mengubah data penyewa!');
         }
@@ -180,10 +195,15 @@ class Penyewa_C071 extends Controller
         }
 
         if ($model->hapus($user)) {
+
             $this->hapusFotoLama($penyewa['ft_ktp']);
             $this->hapusFotoLama($penyewa['ft_sim_a']);
 
-            redirect('Penyewa_C071/index');
+            echo "<script>
+                alert('Data penyewa berhasil dihapus!');
+                window.location.href = '" . base_url('?url=Penyewa_C071/index') . "';
+            </script>";
+
         } else {
             $this->pesanKembali('Gagal menghapus data penyewa!');
         }
@@ -245,7 +265,7 @@ class Penyewa_C071 extends Controller
         }
     }
 
-    // Menampilkan pesan dan kembali ke halaman sebelumnya
+    // Menampilkan pesan error
     private function pesanKembali($pesan)
     {
         echo "<script>
