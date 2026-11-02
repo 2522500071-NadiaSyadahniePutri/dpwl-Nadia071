@@ -24,142 +24,181 @@
         <div class="container-fluid">
 
             <div class="card">
+
                 <div class="card-header">
                     <h3 class="card-title">Daftar Data Penyewa</h3>
-
-                    <div class="card-tools">
-                        <a href="<?= base_url('?url=Penyewa_C071/create_penyewa') ?>"
-                           class="btn btn-primary btn-sm">
-                            <i class="fas fa-plus"></i> Tambah Penyewa
-                        </a>
-                    </div>
                 </div>
 
-                <div class="card-body table-responsive">
+                <div class="card-body">
 
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Username</th>
-                                <th>NIK</th>
-                                <th>Nama Lengkap</th>
-                                <th>No HP</th>
-                                <th>Alamat</th>
-                                <th>Foto KTP</th>
-                                <th>Foto SIM A</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
+                    <!-- Tombol Tambah di kiri atas -->
+                    <div class="mb-3">
+                        <a href="<?= base_url('?url=Penyewa_C071/create_penyewa') ?>"
+                           class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> Tambah Data Penyewa
+                        </a>
+                    </div>
 
-                        <tbody>
-                            <?php if (!empty($dtpenyewa)) : ?>
+                    <div class="table-responsive">
 
-                                <?php $no = 1; ?>
+                        <table class="table table-bordered table-striped">
 
-                                <?php foreach ($dtpenyewa as $p) : ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Username</th>
+                                    <th>NIK</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>No HP</th>
+                                    <th>Alamat</th>
+                                    <th>Foto KTP</th>
+                                    <th>Foto SIM A</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
 
-                                        <td>
-                                            <?= htmlspecialchars($p['user_plq071']) ?>
-                                        </td>
+                            <tbody>
 
-                                        <td>
-                                            <?= htmlspecialchars($p['Nik071']) ?>
-                                        </td>
+                                <?php if (!empty($dtpenyewa)) : ?>
 
-                                        <td>
-                                            <?= htmlspecialchars($p['nm_lngkp071']) ?>
-                                        </td>
+                                    <?php $no = 1; ?>
 
-                                        <td>
-                                            <?= htmlspecialchars($p['no_hp071']) ?>
-                                        </td>
+                                    <?php foreach ($dtpenyewa as $p) : ?>
 
-                                        <td>
-                                            <?= htmlspecialchars($p['almt_lngkp071']) ?>
-                                        </td>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
 
-                                        <td class="text-center">
-                                            <?php if (!empty($p['ft_ktp'])) : ?>
-                                                <img
-                                                    src="<?= base_url('img/' . rawurlencode(basename($p['ft_ktp']))) ?>"
-                                                    width="70"
-                                                    height="50"
-                                                    style="object-fit: cover; cursor:pointer;"
-                                                    class="foto-penyewa"
-                                                    data-foto="<?= base_url('img/' . rawurlencode(basename($p['ft_ktp']))) ?>"
-                                                    alt="Foto KTP">
-                                            <?php else : ?>
-                                                Tidak ada foto
-                                            <?php endif; ?>
-                                        </td>
+                                            <td>
+                                                <?= htmlspecialchars($p['user_plq071']) ?>
+                                            </td>
 
-                                        <td class="text-center">
-                                            <?php if (!empty($p['ft_sim_a'])) : ?>
-                                                <img
-                                                    src="<?= base_url('img/' . rawurlencode(basename($p['ft_sim_a']))) ?>"
-                                                    width="70"
-                                                    height="50"
-                                                    style="object-fit: cover; cursor:pointer;"
-                                                    class="foto-penyewa"
-                                                    data-foto="<?= base_url('img/' . rawurlencode(basename($p['ft_sim_a']))) ?>"
-                                                    alt="Foto SIM A">
-                                            <?php else : ?>
-                                                Tidak ada foto
-                                            <?php endif; ?>
-                                        </td>
+                                            <td>
+                                                <?= htmlspecialchars($p['Nik071']) ?>
+                                            </td>
 
-                                        <td class="text-center">
-                                            <a
-                                                href="<?= base_url('?url=Penyewa_C071/edit_penyewa&user_plq071=' . urlencode($p['user_plq071'])) ?>"
-                                                class="btn btn-warning btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
+                                            <td>
+                                                <?= htmlspecialchars($p['nm_lngkp071']) ?>
+                                            </td>
 
-                                            <form
-                                                action="<?= base_url('?url=Penyewa_C071/hapus_penyewa') ?>"
-                                                method="POST"
-                                                style="display:inline;"
-                                                onsubmit="return confirm('Yakin ingin menghapus data penyewa ini?')">
+                                            <td>
+                                                <?= htmlspecialchars($p['no_hp071']) ?>
+                                            </td>
 
-                                                <input
-                                                    type="hidden"
-                                                    name="user_plq071"
-                                                    value="<?= htmlspecialchars($p['user_plq071']) ?>">
+                                            <td>
+                                                <?= htmlspecialchars($p['almt_lngkp071']) ?>
+                                            </td>
 
-                                                <button type="submit"
+                                            <!-- Foto KTP -->
+                                            <td class="text-center">
+
+                                                <?php if (!empty($p['ft_ktp'])) : ?>
+
+                                                    <img
+                                                        src="<?= base_url('img/' . rawurlencode(basename($p['ft_ktp']))) ?>"
+                                                        width="70"
+                                                        height="50"
+                                                        style="object-fit: cover; cursor:pointer;"
+                                                        class="foto-penyewa"
+                                                        data-foto="<?= base_url('img/' . rawurlencode(basename($p['ft_ktp']))) ?>"
+                                                        alt="Foto KTP">
+
+                                                <?php else : ?>
+
+                                                    Tidak ada foto
+
+                                                <?php endif; ?>
+
+                                            </td>
+
+                                            <!-- Foto SIM A -->
+                                            <td class="text-center">
+
+                                                <?php if (!empty($p['ft_sim_a'])) : ?>
+
+                                                    <img
+                                                        src="<?= base_url('img/' . rawurlencode(basename($p['ft_sim_a']))) ?>"
+                                                        width="70"
+                                                        height="50"
+                                                        style="object-fit: cover; cursor:pointer;"
+                                                        class="foto-penyewa"
+                                                        data-foto="<?= base_url('img/' . rawurlencode(basename($p['ft_sim_a']))) ?>"
+                                                        alt="Foto SIM A">
+
+                                                <?php else : ?>
+
+                                                    Tidak ada foto
+
+                                                <?php endif; ?>
+
+                                            </td>
+
+                                            <!-- Tombol Aksi -->
+                                            <td class="text-center">
+
+                                                <a
+                                                    href="<?= base_url('?url=Penyewa_C071/edit_penyewa&user_plq071=' . urlencode($p['user_plq071'])) ?>"
+                                                    class="btn btn-warning btn-sm">
+
+                                                    <i class="fas fa-edit"></i> Edit
+
+                                                </a>
+
+                                                <form
+                                                    action="<?= base_url('?url=Penyewa_C071/hapus_penyewa') ?>"
+                                                    method="POST"
+                                                    style="display:inline;"
+                                                    onsubmit="return confirm('Yakin ingin menghapus data penyewa ini?')">
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="user_plq071"
+                                                        value="<?= htmlspecialchars($p['user_plq071']) ?>">
+
+                                                    <button
+                                                        type="submit"
                                                         class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
-                                            </form>
+
+                                                        <i class="fas fa-trash"></i> Hapus
+
+                                                    </button>
+
+                                                </form>
+
+                                            </td>
+
+                                        </tr>
+
+                                    <?php endforeach; ?>
+
+                                <?php else : ?>
+
+                                    <tr>
+                                        <td colspan="9" class="text-center">
+                                            Belum ada data penyewa.
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>
 
-                            <?php else : ?>
+                                <?php endif; ?>
 
-                                <tr>
-                                    <td colspan="9" class="text-center">
-                                        Belum ada data penyewa.
-                                    </td>
-                                </tr>
+                            </tbody>
 
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+                        </table>
+
+                    </div>
 
                 </div>
             </div>
 
         </div>
     </section>
+
 </div>
 
 <!-- Modal Preview Foto -->
 <div class="modal fade" id="modalFotoPenyewa" tabindex="-1">
+
     <div class="modal-dialog modal-lg modal-dialog-centered">
+
         <div class="modal-content">
 
             <div class="modal-header">
@@ -171,19 +210,27 @@
             </div>
 
             <div class="modal-body text-center">
-                <img id="gambarPreview"
-                     src=""
-                     class="img-fluid"
-                     alt="Preview Foto">
+
+                <img
+                    id="gambarPreview"
+                    src=""
+                    class="img-fluid"
+                    alt="Preview Foto">
+
             </div>
 
         </div>
+
     </div>
+
 </div>
 
 <script>
 $(document).on('click', '.foto-penyewa', function () {
+
     $('#gambarPreview').attr('src', $(this).data('foto'));
+
     $('#modalFotoPenyewa').modal('show');
+
 });
 </script>
