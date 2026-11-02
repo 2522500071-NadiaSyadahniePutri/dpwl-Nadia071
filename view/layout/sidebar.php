@@ -22,8 +22,8 @@
       </div>
       <div class="info">
         <a href="#" class="d-block">
-    <?= 'User: ' . htmlspecialchars($nm_user ?? 'Admin') ?>
-</a>
+          <?= 'User: ' . htmlspecialchars($nm_user ?? 'Admin') ?>
+        </a>
       </div>
     </div>
 
@@ -60,18 +60,23 @@
           </a>
 
           <ul class="nav nav-treeview">
+
+            <!-- Data Mobil -->
             <li class="nav-item">
               <a href="<?= base_url('Mobil_C/index') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Mobil</p>
               </a>
             </li>
+
+            <!-- Data Penyewa -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?= base_url('Penyewa_C071/index') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Penyewa</p>
               </a>
             </li>
+
           </ul>
         </li>
 
@@ -92,18 +97,21 @@
                 <p>Data Sewa</p>
               </a>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Pembayaran</p>
               </a>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Kembali</p>
               </a>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -146,8 +154,6 @@
 
       </ul>
     </nav>
-    <!-- /.sidebar-menu -->
 
   </div>
-  <!-- /.sidebar -->
 </aside>
